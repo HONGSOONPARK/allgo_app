@@ -10,24 +10,24 @@ class Bottom extends StatelessWidget {
         child: TabBar(
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white60,
-            indicatorColor: Colors.transparent,
+            indicatorColor: Colors.white,
             tabs: <Widget>[
               Tab(
                 icon: Icon(
                   Icons.home,
-                  size: 18,
+                  size: 30,
                 ),
               ),
               Tab(
                 icon: Icon(
-                  Icons.upgrade,
-                  size: 18,
+                  Icons.assessment,
+                  size: 30,
                 ),
               ),
               Tab(
                 icon: Icon(
-                  Icons.settings,
-                  size: 18,
+                  Icons.account_box,
+                  size: 30,
                 ),
               ),
             ]),

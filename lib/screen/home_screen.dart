@@ -1,3 +1,7 @@
+import 'package:allgo_app/widget/home_widget/event_banner.dart';
+import 'package:allgo_app/widget/home_widget/my_algorithm.dart';
+import 'package:allgo_app/widget/home_widget/service_info.dart';
+import 'package:allgo_app/widget/home_widget/three_month.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,52 +16,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Center(
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(top: 350),
-            child: Text(
-              'ALLGO',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                  color: Colors.white),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            width: 140,
-            height: 5,
-            color: Colors.red,
-          ),
-        ],
-      ),
-    ));
-  }
-}
-
-class TopBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(20, 7, 20, 7),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(right: 1),
-            child: Text(
-              'ALLGO',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                  color: Colors.white),
-            ),
-          ),
-        ],
-      ),
+    return ListView(
+      children: <Widget>[
+        ThreeMonth(),
+        MyAlgorithm(),
+        ServiceInfo(),
+        EventBanner(),
+      ],
     );
   }
 }

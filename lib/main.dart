@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:allgo_app/screen/home_screen.dart';
-import 'package:allgo_app/widget/bottom_bar.dart';
+import 'package:allgo_app/widget/basic/bottom_bar.dart';
+import 'package:allgo_app/widget/basic/top_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,15 +15,18 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'HongFlix',
+      debugShowCheckedModeBanner: false,
+      title: 'ALLGO',
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.greenAccent,
-        accentColor: Colors.yellow,
+        brightness: Brightness.light,
+        primaryColor: Colors.blue,
+        accentColor: Colors.blueAccent,
       ),
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: TopBar(),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
@@ -33,7 +37,8 @@ class _MyAppState extends State<MyApp> {
           ), // TabBarView
           bottomNavigationBar: Bottom(),
         ), // Scaffold
-      ), // DefaultTabController
+      ),
+      // DefaultTabController
     );
   }
 }

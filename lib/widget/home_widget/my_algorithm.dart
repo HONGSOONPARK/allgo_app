@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../main.dart';
 
 class MyAlgorithm extends StatefulWidget {
   _MyAlgorithm createState() => _MyAlgorithm();
@@ -16,6 +17,7 @@ class _MyAlgorithm extends State<MyAlgorithm> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+      width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -34,7 +36,7 @@ class _MyAlgorithm extends State<MyAlgorithm> {
                   '알고리즘',
                   style: TextStyle(
                       fontSize: 15,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w500,
                       letterSpacing: 2.0,
                       color: Colors.blueAccent),
                 ),
@@ -55,13 +57,15 @@ class _MyAlgorithm extends State<MyAlgorithm> {
                   child: Row(
                     children: <Widget>[
                       ButtonTheme(
-                        minWidth: 200.0,
-                        height: 10.0,
                         child: ElevatedButton(
                           onPressed: () {
                             print('algorithm');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('알고리즘ㄱㄲㄲㄲㄱ')),
+                            );
                           },
                           child: Text("단기투자 전략"),
+                          style: ElevatedButton.styleFrom(),
                         ),
                       ),
                       SizedBox(
@@ -70,107 +74,20 @@ class _MyAlgorithm extends State<MyAlgorithm> {
                       ButtonTheme(
                         minWidth: 10.0,
                         height: 10.0,
-                        child: ElevatedButton(
+                        child: TextButton(
                           onPressed: () {
                             print('algorithm');
+                            flutterToast('삭제 이벤트 발싱');
                           },
                           child: Icon(
-                            Icons.close_outlined,
+                            Icons.close_rounded,
                             size: 15,
                             color: Colors.black,
                           ),
                         ),
                       ),
                       Switch(
-                          value: true,
-                          onChanged: (value) {
-                            setState(() {
-                              isSwitched = value;
-                              print(isSwitched);
-                            });
-                          },
-                          activeTrackColor: Colors.blueGrey,
-                          activeColor: Colors.redAccent),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Row(
-                    children: <Widget>[
-                      ButtonTheme(
-                        minWidth: 200.0,
-                        height: 10.0,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            print('algorithm');
-                          },
-                          child: Text("중장기 투자 전략"),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      ButtonTheme(
-                        minWidth: 10.0,
-                        height: 10.0,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            print('algorithm');
-                          },
-                          child: Icon(
-                            Icons.close_outlined,
-                            size: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      Switch(
-                          value: true,
-                          onChanged: (value) {
-                            setState(() {
-                              isSwitched = value;
-                              print(isSwitched);
-                            });
-                          },
-                          activeTrackColor: Colors.blueGrey,
-                          activeColor: Colors.redAccent),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Row(
-                    children: <Widget>[
-                      ButtonTheme(
-                        minWidth: 200.0,
-                        height: 10.0,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            print('algorithm');
-                          },
-                          child: Text("매집 투자 전략"),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      ButtonTheme(
-                        minWidth: 10.0,
-                        height: 10.0,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            print('algorithm');
-                          },
-                          child: Icon(
-                            Icons.close_outlined,
-                            size: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      Switch(
-                          value: true,
+                          value: isSwitched,
                           onChanged: (value) {
                             setState(() {
                               isSwitched = value;
@@ -186,6 +103,28 @@ class _MyAlgorithm extends State<MyAlgorithm> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class MySnackBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        child: Text("text"),
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+              "hello",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.teal,
+            duration: Duration(milliseconds: 1000),
+          ));
+        },
       ),
     );
   }

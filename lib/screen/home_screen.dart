@@ -18,10 +18,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        ThreeMonth(),
-        MyAlgorithm(),
-        ServiceInfo(),
-        EventBanner(),
+        SafeArea(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            ThreeMonth(),
+            MyAlgorithm(),
+            ServiceInfo(),
+            EventBanner()
+          ],
+        ))
       ],
     );
   }

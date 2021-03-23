@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ServiceInfo extends StatefulWidget {
-  _ServiceInfo createState() => _ServiceInfo();
+class UserInfo extends StatefulWidget {
+  _UserInfoState createState() => _UserInfoState();
 }
 
-class _ServiceInfo extends State<ServiceInfo> {
+class _UserInfoState extends State<UserInfo> {
   @override
   void initState() {
     super.initState();
@@ -21,11 +21,7 @@ class _ServiceInfo extends State<ServiceInfo> {
             width: double.infinity,
             margin: const EdgeInsets.fromLTRB(0, 7, 0, 0),
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.blueGrey[100], width: 3.5),
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-            ),
-            child: Text("ALLGO, 어떤 서비스인가요 ? -> 자세히 보자"),
+            child: Text("유저 정보를 뿌려주는 페이지, \n 로그인 정보 없을 경우 로그인 화면 표시"),
           ),
         ],
       ),

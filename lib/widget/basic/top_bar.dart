@@ -1,4 +1,6 @@
-import 'package:allgo_app/main.dart';
+import 'dart:developer';
+
+import 'package:allgo_app/screen/push_screen.dart';
 import 'package:flutter/material.dart';
 
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,8 +15,10 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
           IconButton(
               icon: Icon(Icons.mail),
               onPressed: () {
-                print('hambuger');
-                flutterToast('푸시화면으로 갈거임');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PushScreen()));
+                log('onPressed  Push Message Button');
+                //flutterToast('푸시화면으로 갈거임');
               }),
         ],
       ),

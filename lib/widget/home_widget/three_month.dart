@@ -16,8 +16,8 @@ class _ThreeMonthState extends State<ThreeMonth> {
       margin: const EdgeInsets.fromLTRB(15, 15, 15, 15),
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blueGrey[100], width: 3.5),
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        border: Border.all(color: Colors.blueGrey, width: 1.5),
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

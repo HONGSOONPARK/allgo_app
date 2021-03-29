@@ -1,10 +1,13 @@
 import 'package:allgo_app/screen/algorithm_screen.dart';
-import 'package:allgo_app/screen/user_screen.dart';
+import 'package:allgo_app/screen/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:allgo_app/screen/home_screen.dart';
 import 'package:allgo_app/widget/basic/bottom_bar.dart';
 import 'package:allgo_app/widget/basic/top_bar.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:fluttertoast/fluttertoast.dart'
+    show Fluttertoast, Toast, ToastGravity;
 
 void main() => runApp(MyApp());
 
@@ -13,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TabController controller;
+  late TabController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: DefaultTabController(
         length: 3,
+        initialIndex: 0,
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: TopBar(),
@@ -35,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             children: <Widget>[
               HomeScreen(),
               AlgorithmScreen(),
-              UserScreen(),
+              LoginScreen(),
             ], // <Widget>[]
           ), // TabBarView
           bottomNavigationBar: Bottom(),

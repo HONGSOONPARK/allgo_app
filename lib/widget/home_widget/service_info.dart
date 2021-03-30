@@ -35,7 +35,7 @@ class _ServiceInfo extends State<ServiceInfo> {
                 log('onPressed  Push Message Button');
               },
               child: Text(
-                "ALLGO, 어떤 서비스인가요?",
+                "ALLGO, 어떤 서비스인가요? -> 자세히 보기",
                 style: TextStyle(color: Colors.black),
               ),
             ),

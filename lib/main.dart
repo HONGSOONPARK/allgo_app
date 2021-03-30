@@ -5,10 +5,6 @@ import 'package:allgo_app/screen/home_screen.dart';
 import 'package:allgo_app/widget/basic/bottom_bar.dart';
 import 'package:allgo_app/widget/basic/top_bar.dart';
 
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:fluttertoast/fluttertoast.dart'
-    show Fluttertoast, Toast, ToastGravity;
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -50,12 +46,12 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-void flutterToast(String msg) {
-  Fluttertoast.showToast(
-      msg: msg,
-      gravity: ToastGravity.CENTER,
-      backgroundColor: Colors.redAccent,
-      fontSize: 20.0,
-      textColor: Colors.white,
-      toastLength: Toast.LENGTH_SHORT);
-}
+// void flutterToast(String msg) {
+//   Fluttertoast.showToast(
+//       msg: msg,
+//       gravity: ToastGravity.CENTER,
+//       backgroundColor: Colors.redAccent,
+//       fontSize: 20.0,
+//       textColor: Colors.white,
+//       toastLength: Toast.LENGTH_SHORT);
+// }

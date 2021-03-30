@@ -64,8 +64,18 @@ class _MyAlgorithm extends State<MyAlgorithm> {
                               SnackBar(content: Text('알고리즘ㄱㄲㄲㄲㄱ')),
                             );
                           },
-                          child: Text("단기투자 전략"),
-                          style: ElevatedButton.styleFrom(),
+                          child: Text(
+                            "단기투자 전략",
+                            style: TextStyle(),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: Colors.blue,
+                                    width: 1,
+                                    style: BorderStyle.solid),
+                                borderRadius: BorderRadius.circular(50)),
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -77,7 +87,7 @@ class _MyAlgorithm extends State<MyAlgorithm> {
                         child: TextButton(
                           onPressed: () {
                             print('algorithm');
-                            flutterToast('삭제 이벤트 발싱');
+                            // flutterToast('삭제 이벤트 발싱');
                           },
                           child: Icon(
                             Icons.close_rounded,

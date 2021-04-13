@@ -1,11 +1,17 @@
 import 'package:allgo_app/screen/algorithm_screen.dart';
 import 'package:allgo_app/screen/login_screen.dart';
+import 'package:allgo_app/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:allgo_app/screen/home_screen.dart';
 import 'package:allgo_app/widget/basic/bottom_bar.dart';
 import 'package:allgo_app/widget/basic/top_bar.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(new MaterialApp(
+      home: new SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/MainScreen': (BuildContext context) => new MyApp()
+      },
+    ));
 
 class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
@@ -13,6 +19,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

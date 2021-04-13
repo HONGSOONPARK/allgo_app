@@ -4,7 +4,13 @@
 			"path": "."
 		},
 		{
-			"path": "../flutter_netflix_clone"
+			"path": "../../nodejs/api_mento"
+		},
+		{
+			"path": "../../nodejs/nestjs-study"
+		},
+		{
+			"path": "../flutter_netflix_clone/flutter_app"
 		}
 	],
 	"settings": {}

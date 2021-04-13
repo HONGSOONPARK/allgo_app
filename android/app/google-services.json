@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "748061288903",
+    "project_id": "allgo-ca2c4",
+    "storage_bucket": "allgo-ca2c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748061288903:android:e95e96a341b43116b251e2",
+        "android_client_info": {
+          "package_name": "pro.ject.allgo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748061288903-sc47mc0k0pv7tab5oan2soh5v9ielorq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMzZG8nctB5QlWDlolPvhm7uAPSHtIwv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748061288903-sc47mc0k0pv7tab5oan2soh5v9ielorq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "748061288903-0o4vgd3pgvr1k8gsirfjgp9tuaihrhm1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pro.ject.allgoApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

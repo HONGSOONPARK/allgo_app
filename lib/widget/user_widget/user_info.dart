@@ -18,7 +18,6 @@ class _UserInfoState extends State<UserInfo> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            width: double.infinity,
             margin: const EdgeInsets.fromLTRB(0, 7, 0, 0),
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
             child: Text("유저 정보를 뿌려주는 페이지, \n 로그인 정보 없을 경우 로그인 화면 표시"),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../main.dart';
 
 class MyAlgorithm extends StatefulWidget {
   _MyAlgorithm createState() => _MyAlgorithm();

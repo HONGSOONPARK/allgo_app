@@ -4,11 +4,33 @@
     // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
     "version": "0.2.0",
     "configurations": [
-    
         {
             "name": "allgo_app",
             "request": "launch",
             "type": "dart"
-        }
-    ]
+        },
+        {
+            "name": "Android",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "sdk gphone arm64"
+        
+          },
+          {
+            "name": "iPhone",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "iphone 12 Pro Max"
+          },
+        ],
+        "compounds": [
+          {
+            "name": "All Devices",
+            "configurations": [
+              "Android",
+              "iPhone"
+            ],
+          }
+        ]
+    
 } 

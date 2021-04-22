@@ -1,3 +1,6 @@
+import 'package:json_annotation/json_annotation.dart';
+
+@JsonSerializable()
 class AppInfo {
   final int no;
   final String package;
@@ -30,4 +33,8 @@ class AppInfo {
       updateDate: json['updateDate'],
     );
   }
+  //
+  // factory AppInfo.fromJson(Map<String, dynamic> json) =>
+  //     _$AppInfoFromJson(json);
+  // Map<String, dynamic> toJson() => _$AppInfoToJson(this);
 }

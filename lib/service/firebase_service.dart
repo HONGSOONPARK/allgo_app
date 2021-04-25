@@ -1,5 +1,10 @@
+import 'dart:async';
+import 'dart:convert';
+import 'package:allgo_app/common/util.dart';
+import 'package:allgo_app/model/response.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:io';
+import 'package:http/http.dart' as http;
 
 class FirebaseService {
   static final FirebaseService _manager = FirebaseService._internal();
@@ -12,31 +17,45 @@ class FirebaseService {
 
   FirebaseService._internal() {
     // 초기화 코드
-    //
     _firebaseMessaging = FirebaseMessaging.instance;
   }
-
+  void navigationPage() {
+    // Navigator.of(context).pushReplacementNamed('/MainScreen');
+  }
   void _requestIOSPermission() {
-    // _firebaseMessaging.requestNotificationPermissions(
-    //     IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.requestPermission(
+        alert: true, announcement: true, badge: true, sound: true);
 
-    // _firebaseMessaging.onIosSettingsRegistered
-    //     .listen((IosNotificationSettings settings) {
-    //   print("Settings registered: $settings");
-    // });
+    _firebaseMessaging.setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
   }
 
   void registerToken() {
     if (Platform.isIOS) {
       _requestIOSPermission();
     }
-
-    _firebaseMessaging = FirebaseMessaging.instance;
-
     _firebaseMessaging.getToken().then((token) {
-      print(token);
-      // 장고 서버에 token알려주기
+      print("fcm token ::: " + token.toString());
+      fetchToken(token.toString());
     });
+  }
+
+  Future<ResponseBase> fetchToken(String token) async {
+    final response = await http.post(
+      Uri.http(getApiUrl(), URL_TOKEN_MERGE),
+      body: jsonEncode(
+        {'fcmToken': token},
+      ),
+      headers: {'Content-Type': "application/json"},
+    );
+    if (response.statusCode == 201) {
+      return ResponseBase.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('token 갱신 실패');
+    }
   }
 
   void listenFirebaseMessaging() {

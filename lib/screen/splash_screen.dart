@@ -1,12 +1,13 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import 'package:allgo_app/common/util.dart';
 import 'package:allgo_app/model/app_info.dart';
 import 'package:allgo_app/model/response.dart';
 import 'package:allgo_app/service/firebase_service.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -18,7 +19,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   // late Future<AppInfo> futureAppInfo;
   late Future<ResponseBase> futureResponse;
-  late String appName, packageName, version, buildNumber;
   late AppInfo appInfo;
   late PackageInfo packageInfo;
 
@@ -40,33 +40,41 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // 앱 기본 정보(버전, 빌드버전);
     packageInfo = await getAppInfo();
-    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      appName = packageInfo.appName;
-      packageName = packageInfo.packageName;
-      version = packageInfo.version;
-      buildNumber = packageInfo.buildNumber;
-      print(
-          appName + " | " + packageName + " |" + version + "| " + buildNumber);
-    });
+    print(packageInfo.appName +
+        "::" +
+        packageInfo.packageName +
+        "::" +
+        packageInfo.version +
+        "::" +
+        packageInfo.buildNumber);
 
     // var _duration = new Duration(seconds: 2);
     // return new Timer(_duration, navigationPage);
     // Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
   }
 
-  _goMain() async {
+  _goMain(BuildContext context) {
     var _duration = new Duration(seconds: 2);
-    print(appName + " | " + packageName + " |" + version + "| " + buildNumber);
-    print(packageInfo.appName + " |" + packageInfo.buildNumber);
-
+    if (Platform.isAndroid) {
+      if (packageInfo.version != appInfo.aosMarketVersion) {
+        dialogMarket(context);
+      } else {
+        return new Timer(_duration, navigationPage);
+      }
+    } else if (Platform.isIOS) {
+      if (packageInfo.version != appInfo.iosMarketVersion) {
+        dialogMarket(context);
+      } else {
+        return new Timer(_duration, navigationPage);
+      }
+    }
     // 버전 체크 등 초기화 작업 진행
-    //
-    return new Timer(_duration, navigationPage);
+    //return new Timer(_duration, navigationPage);
     // Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
   }
 
   void navigationPage() {
-    // Navigator.of(context).pushReplacementNamed('/MainScreen');
+    Navigator.of(context).pushReplacementNamed('/MainScreen');
   }
 
   @override
@@ -101,14 +109,16 @@ class _SplashScreenState extends State<SplashScreen> {
               FutureBuilder<ResponseBase>(
                 future: futureResponse,
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    // 성공시
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasData) {
                     appInfo = AppInfo.fromJson(snapshot.data!.data);
-                    _goMain();
+                    _goMain(context);
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }
-                  return CircularProgressIndicator();
+
+                  return Container();
                 },
               ),
             ],
@@ -132,43 +142,59 @@ class _SplashScreenState extends State<SplashScreen> {
     return info;
   }
 
-  Future<void> flutterDialog(BuildContext context) async {
-    showDialog(
-        context: context,
-        //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
-            //Dialog Main Title
-            title: Column(
-              children: <Widget>[
-                new Text("Dialog Title"),
-              ],
-            ),
-            //
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "Dialog Content",
-                ),
-              ],
-            ),
-            actions: <Widget>[
-              new ElevatedButton(
-                child: new Text("확인"),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
-  }
+  Future dialogMarket(BuildContext context) => Future(() {
+        return showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: Text('새로운 버전이 출시되었습니다.'),
+                  content: Text('최신 버전 업데이트 후 이용가능합니다.'),
+                  actions: <Widget>[
+                    ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop('Yes'),
+                        child: Text('업데이트'))
+                  ],
+                ));
+      });
+
+//   Future flutterDialog(BuildContext context) async {
+//     await showDialog(
+//         context: context,
+//         //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+//         barrierDismissible: false,
+//         builder: (BuildContext context) {
+//           return AlertDialog(
+//             // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+//             shape: RoundedRectangleBorder(
+//                 borderRadius: BorderRadius.circular(10.0)),
+//             //Dialog Main Title
+//             title: Column(
+//               children: <Widget>[
+//                 new Text("Dialog Title"),
+//               ],
+//             ),
+//             //
+//             content: Column(
+//               mainAxisSize: MainAxisSize.min,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: <Widget>[
+//                 Text(
+//                   "Dialog Content",
+//                 ),
+//               ],
+//             ),
+//             actions: <Widget>[
+//               new ElevatedButton(
+//                 child: new Text("확인"),
+//                 onPressed: () {
+//                   Navigator.pop(context);
+//                 },
+//               ),
+//             ],
+//           );
+//         });
+
+//     return Container();
+//   }
 }
 
 // 할것

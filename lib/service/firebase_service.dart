@@ -47,7 +47,7 @@ class FirebaseService {
     final response = await http.post(
       Uri.http(getApiUrl(), URL_TOKEN_MERGE),
       body: jsonEncode(
-        {'fcmToken': token},
+        {'fcmToken': token, 'updateDate': DateTime.now().toString()},
       ),
       headers: {'Content-Type': "application/json"},
     );

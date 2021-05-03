@@ -1,4 +1,10 @@
+import 'package:allgo_app/common/util.dart';
+import 'package:allgo_app/model/app_banner.dart';
+import 'package:allgo_app/model/response.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class EventBanner extends StatefulWidget {
   _EventBanner createState() => _EventBanner();
@@ -6,41 +12,59 @@ class EventBanner extends StatefulWidget {
 
 class _EventBanner extends State<EventBanner> {
   bool isSwitched = false;
+  late Future<ResponseBase> futureResponse;
+  late AppBanner bannerInfo;
 
   @override
   void initState() {
     super.initState();
+    _init();
+    futureResponse = fetchResponse();
   }
+
+  _init() async {}
 
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
         width: double.infinity,
-        height: 100,
-        color: Colors.redAccent,
+        height: 180,
+        // color: Colors.redAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '이벤트 배너, 이미지',
-              textAlign: TextAlign.center,
+            FutureBuilder<ResponseBase>(
+              future: futureResponse,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData) {
+                  bannerInfo = AppBanner.fromJson(snapshot.data!.data);
+                  return Container(
+                    child: Column(
+                      children: <Widget>[
+                        Image.network("${bannerInfo.urlPath}")
+                      ],
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return Container();
+              },
             ),
-            SizedBox(
-                // width: double.infinity,
-                // height: 10,
-                ),
-            Container(
-                // width: double.infinity,
-                // margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                // padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                // decoration: BoxDecoration(
-                //   border: Border.all(color: Colors.blueGrey[100], width: 0.5),
-                //   borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                // ),
-                // child: Text("event banner"),
-                ),
           ],
         ));
+  }
+
+  Future<ResponseBase> fetchResponse() async {
+    final response =
+        await http.get(Uri.http(getApiUrl(), 'api/main/banner/g/1'));
+    if (response.statusCode == 200) {
+      return ResponseBase.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('배너 불러오기 실패');
+    }
   }
 }

@@ -7,7 +7,7 @@ class BackPressBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
         child: AppBar(
-      title: Text('킹망가기'),
+      title: Text('알림'),
       centerTitle: false,
       elevation: 0.0,
       leading: IconButton(

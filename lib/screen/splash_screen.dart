@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:kakao_flutter_sdk/link.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import 'package:allgo_app/common/util.dart';
@@ -79,6 +79,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // kakao client id
+    KakaoContext.clientId = "0cdc5405e9a41dc9b32c5590b888dacc";
+    KakaoContext.javascriptClientId = "3fc56c8fd83c803b2db20ef493cfe970";
+
     return Scaffold(
         backgroundColor: Colors.blue,
         body: Center(

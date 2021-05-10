@@ -190,7 +190,7 @@ class _MyAlgorithm extends State<MyAlgorithm> {
                                   );
                                 },
                                 child: Text(
-                                  "${algoInfo.codeName}",
+                                  "${algoInfo.code_name}",
                                   style: TextStyle(),
                                 ),
                                 style: ElevatedButton.styleFrom(

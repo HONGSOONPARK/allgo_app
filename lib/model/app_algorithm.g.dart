@@ -9,17 +9,18 @@ part of 'app_algorithm.dart';
 AppAlgorithm _$AppAlgorithmFromJson(Map<String, dynamic> json) {
   return $checkedNew('AppAlgorithm', json, () {
     final val = AppAlgorithm(
-      no: $checkedConvert(json, 'no', (v) => v as int?),
+      seq: $checkedConvert(json, 'seq', (v) => v as int?),
       code: $checkedConvert(json, 'code', (v) => v as String?),
-      codeName: $checkedConvert(json, 'codeName', (v) => v as String?),
+      code_name: $checkedConvert(json, 'code_name', (v) => v as String?),
       explain: $checkedConvert(json, 'explain', (v) => v as String?),
-      earningLate: $checkedConvert(json, 'earningLate', (v) => v as int?),
-      earningAverage: $checkedConvert(json, 'earningAverage', (v) => v as int?),
-      standardDeviation:
-          $checkedConvert(json, 'standardDeviation', (v) => v as int?),
-      holdingPeriod:
-          $checkedConvert(json, 'holdingPeriod', (v) => v as String?),
-      updateDate: $checkedConvert(json, 'updateDate', (v) => v as String?),
+      earning_late: $checkedConvert(json, 'earning_late', (v) => v as int?),
+      earning_average:
+          $checkedConvert(json, 'earning_average', (v) => v as int?),
+      standard_deviation:
+          $checkedConvert(json, 'standard_deviation', (v) => v as int?),
+      holding_period:
+          $checkedConvert(json, 'holding_period', (v) => v as String?),
+      create_time: $checkedConvert(json, 'create_time', (v) => v as String?),
     );
     return val;
   });
@@ -27,13 +28,13 @@ AppAlgorithm _$AppAlgorithmFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AppAlgorithmToJson(AppAlgorithm instance) =>
     <String, dynamic>{
-      'no': instance.no,
+      'seq': instance.seq,
       'code': instance.code,
-      'codeName': instance.codeName,
+      'code_name': instance.code_name,
       'explain': instance.explain,
-      'earningLate': instance.earningLate,
-      'earningAverage': instance.earningAverage,
-      'standardDeviation': instance.standardDeviation,
-      'holdingPeriod': instance.holdingPeriod,
-      'updateDate': instance.updateDate,
+      'earning_late': instance.earning_late,
+      'earning_average': instance.earning_average,
+      'standard_deviation': instance.standard_deviation,
+      'holding_period': instance.holding_period,
+      'create_time': instance.create_time,
     };

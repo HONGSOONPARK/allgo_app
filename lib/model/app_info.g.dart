@@ -9,30 +9,32 @@ part of 'app_info.dart';
 AppInfo _$AppInfoFromJson(Map<String, dynamic> json) {
   return $checkedNew('AppInfo', json, () {
     final val = AppInfo(
-      no: $checkedConvert(json, 'no', (v) => v as int?),
-      package: $checkedConvert(json, 'package', (v) => v as String?),
-      appName: $checkedConvert(json, 'appName', (v) => v as String?),
-      aosMinVersion:
-          $checkedConvert(json, 'aosMinVersion', (v) => v as String?),
-      aosMarketVersion:
-          $checkedConvert(json, 'aosMarketVersion', (v) => v as String?),
-      iosMinVersion:
-          $checkedConvert(json, 'iosMinVersion', (v) => v as String?),
-      iosMarketVersion:
-          $checkedConvert(json, 'iosMarketVersion', (v) => v as String?),
-      updateDate: $checkedConvert(json, 'updateDate', (v) => v as String?),
+      seq: $checkedConvert(json, 'seq', (v) => v as int?),
+      aos_package: $checkedConvert(json, 'aos_package', (v) => v as String?),
+      ios_package: $checkedConvert(json, 'ios_package', (v) => v as String?),
+      app_name: $checkedConvert(json, 'app_name', (v) => v as String?),
+      aos_min_version:
+          $checkedConvert(json, 'aos_min_version', (v) => v as String?),
+      aos_market_version:
+          $checkedConvert(json, 'aos_market_version', (v) => v as String?),
+      ios_min_version:
+          $checkedConvert(json, 'ios_min_version', (v) => v as String?),
+      ios_market_version:
+          $checkedConvert(json, 'ios_market_version', (v) => v as String?),
+      create_time: $checkedConvert(json, 'create_time', (v) => v as String?),
     );
     return val;
   });
 }
 
 Map<String, dynamic> _$AppInfoToJson(AppInfo instance) => <String, dynamic>{
-      'no': instance.no,
-      'package': instance.package,
-      'appName': instance.appName,
-      'aosMinVersion': instance.aosMinVersion,
-      'aosMarketVersion': instance.aosMarketVersion,
-      'iosMinVersion': instance.iosMinVersion,
-      'iosMarketVersion': instance.iosMarketVersion,
-      'updateDate': instance.updateDate,
+      'seq': instance.seq,
+      'aos_package': instance.aos_package,
+      'ios_package': instance.ios_package,
+      'app_name': instance.app_name,
+      'aos_min_version': instance.aos_min_version,
+      'aos_market_version': instance.aos_market_version,
+      'ios_min_version': instance.ios_min_version,
+      'ios_market_version': instance.ios_market_version,
+      'create_time': instance.create_time,
     };

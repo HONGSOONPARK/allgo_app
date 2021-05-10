@@ -9,11 +9,11 @@ part of 'app_push_info.dart';
 AppPushInfo _$AppPushInfoFromJson(Map<String, dynamic> json) {
   return $checkedNew('AppPushInfo', json, () {
     final val = AppPushInfo(
-      fcmToken: $checkedConvert(json, 'fcmToken', (v) => v as String?),
-      pushYn: $checkedConvert(json, 'pushYn', (v) => v as String?),
-      updateDate: $checkedConvert(json, 'updateDate',
+      id: $checkedConvert(json, 'id', (v) => v as int?),
+      fcm_token: $checkedConvert(json, 'fcm_token', (v) => v as String?),
+      push_yn: $checkedConvert(json, 'push_yn', (v) => v as String?),
+      create_time: $checkedConvert(json, 'create_time',
           (v) => v == null ? null : DateTime.parse(v as String)),
-      accountId: $checkedConvert(json, 'accountId', (v) => v as int?),
     );
     return val;
   });
@@ -21,8 +21,8 @@ AppPushInfo _$AppPushInfoFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AppPushInfoToJson(AppPushInfo instance) =>
     <String, dynamic>{
-      'accountId': instance.accountId,
-      'fcmToken': instance.fcmToken,
-      'pushYn': instance.pushYn,
-      'updateDate': instance.updateDate?.toIso8601String(),
+      'id': instance.id,
+      'fcm_token': instance.fcm_token,
+      'push_yn': instance.push_yn,
+      'create_time': instance.create_time?.toIso8601String(),
     };

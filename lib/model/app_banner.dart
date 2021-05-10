@@ -3,28 +3,29 @@ part 'app_banner.g.dart';
 
 @JsonSerializable(includeIfNull: true, checked: true, explicitToJson: true)
 class AppBanner {
-  final int? no;
+  final int? seq;
   final String? screen;
   final String? code;
-  final String? codeName;
-  final String? urlPath;
+  // ignore: non_constant_identifier_names
+  final String? code_name;
+  final String? url_path;
   final String? explain;
-  final String? useYn;
-  final String? startDate;
-  final String? endDate;
-  final String? updateDate;
+  final String? use_yn;
+  final String? start_date;
+  final String? end_date;
+  final String? create_time;
 
   AppBanner(
-      {required this.no,
+      {required this.seq,
       required this.screen,
       required this.code,
-      required this.codeName,
+      required this.code_name,
       required this.explain,
-      required this.urlPath,
-      required this.useYn,
-      required this.startDate,
-      required this.endDate,
-      required this.updateDate});
+      required this.url_path,
+      required this.use_yn,
+      required this.start_date,
+      required this.end_date,
+      required this.create_time});
 
   factory AppBanner.fromJson(Map<String, dynamic> json) =>
       _$AppBannerFromJson(json);

@@ -56,13 +56,13 @@ class _SplashScreenState extends State<SplashScreen> {
   _goMain(BuildContext context) {
     var _duration = new Duration(seconds: 2);
     if (Platform.isAndroid) {
-      if (packageInfo.version != appInfo.aosMarketVersion) {
+      if (packageInfo.version != appInfo.aos_market_version) {
         dialogMarket(context);
       } else {
         return new Timer(_duration, navigationPage);
       }
     } else if (Platform.isIOS) {
-      if (packageInfo.version != appInfo.iosMarketVersion) {
+      if (packageInfo.version != appInfo.ios_market_version) {
         dialogMarket(context);
       } else {
         return new Timer(_duration, navigationPage);

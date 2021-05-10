@@ -3,22 +3,22 @@ part 'app_notice.g.dart';
 
 @JsonSerializable(includeIfNull: true, checked: true, explicitToJson: true)
 class AppNotice {
-  final int? no;
+  final int? seq;
   final String? period;
-  final int? earningLate;
+  final int? earning_late;
   final int? cost;
-  final String? startDate;
-  final String? endDate;
-  final String? updateDate;
+  final String? start_date;
+  final String? end_date;
+  final String? create_time;
 
   AppNotice(
-      {required this.no,
+      {required this.seq,
       required this.period,
-      required this.earningLate,
+      required this.earning_late,
       required this.cost,
-      required this.startDate,
-      required this.endDate,
-      required this.updateDate});
+      required this.start_date,
+      required this.end_date,
+      required this.create_time});
   //
 
   factory AppNotice.fromJson(Map<String, dynamic> json) =>

@@ -44,7 +44,7 @@ class _EventBanner extends State<EventBanner> {
                   return Container(
                     child: Column(
                       children: <Widget>[
-                        Image.network("${bannerInfo.urlPath}")
+                        Image.network("${bannerInfo.url_path}")
                       ],
                     ),
                   );

@@ -9,24 +9,24 @@ part of 'app_notice.dart';
 AppNotice _$AppNoticeFromJson(Map<String, dynamic> json) {
   return $checkedNew('AppNotice', json, () {
     final val = AppNotice(
-      no: $checkedConvert(json, 'no', (v) => v as int?),
+      seq: $checkedConvert(json, 'seq', (v) => v as int?),
       period: $checkedConvert(json, 'period', (v) => v as String?),
-      earningLate: $checkedConvert(json, 'earningLate', (v) => v as int?),
+      earning_late: $checkedConvert(json, 'earning_late', (v) => v as int?),
       cost: $checkedConvert(json, 'cost', (v) => v as int?),
-      startDate: $checkedConvert(json, 'startDate', (v) => v as String?),
-      endDate: $checkedConvert(json, 'endDate', (v) => v as String?),
-      updateDate: $checkedConvert(json, 'updateDate', (v) => v as String?),
+      start_date: $checkedConvert(json, 'start_date', (v) => v as String?),
+      end_date: $checkedConvert(json, 'end_date', (v) => v as String?),
+      create_time: $checkedConvert(json, 'create_time', (v) => v as String?),
     );
     return val;
   });
 }
 
 Map<String, dynamic> _$AppNoticeToJson(AppNotice instance) => <String, dynamic>{
-      'no': instance.no,
+      'seq': instance.seq,
       'period': instance.period,
-      'earningLate': instance.earningLate,
+      'earning_late': instance.earning_late,
       'cost': instance.cost,
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
-      'updateDate': instance.updateDate,
+      'start_date': instance.start_date,
+      'end_date': instance.end_date,
+      'create_time': instance.create_time,
     };

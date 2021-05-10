@@ -108,7 +108,7 @@ class _ThreeMonthState extends State<ThreeMonth> {
                             color: Colors.black),
                         textAlign: TextAlign.left,
                       ),
-                      Text('${noticeInfo.earningLate} 만원',
+                      Text('${noticeInfo.earning_late} 만원',
                           style: TextStyle(
                               fontWeight: FontWeight.w900,
                               fontSize: 30,

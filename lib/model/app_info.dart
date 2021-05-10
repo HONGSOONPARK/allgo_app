@@ -3,39 +3,26 @@ part 'app_info.g.dart';
 
 @JsonSerializable(includeIfNull: true, checked: true, explicitToJson: true)
 class AppInfo {
-  final int? no;
-  final String? package;
-  final String? appName;
-  final String? aosMinVersion;
-  final String? aosMarketVersion;
-  final String? iosMinVersion;
-  final String? iosMarketVersion;
-  final String? updateDate;
+  final int? seq;
+  final String? aos_package;
+  final String? ios_package;
+  final String? app_name;
+  final String? aos_min_version;
+  final String? aos_market_version;
+  final String? ios_min_version;
+  final String? ios_market_version;
+  final String? create_time;
 
   AppInfo(
-      {required this.no,
-      required this.package,
-      required this.appName,
-      required this.aosMinVersion,
-      required this.aosMarketVersion,
-      required this.iosMinVersion,
-      required this.iosMarketVersion,
-      required this.updateDate});
-
-  // factory AppInfo.fromJson(Map<dynamic, dynamic> json) {
-  //   return AppInfo(
-  //     no: json['no'],
-  //     package: json['package'],
-  //     appName: json['appName'],
-  //     aosMinVersion: json['aosMinVersion'],
-  //     aosMarketVersion: json['aosMarketVersion'],
-  //     iosMinVersion: json['iosMinVersion'],
-  //     iosMarketVersion: json['iosMarketVersion'],
-  //     updateDate: json['updateDate'],
-  //   );
-  // }
-
-  //
+      {required this.seq,
+      required this.aos_package,
+      required this.ios_package,
+      required this.app_name,
+      required this.aos_min_version,
+      required this.aos_market_version,
+      required this.ios_min_version,
+      required this.ios_market_version,
+      required this.create_time});
 
   factory AppInfo.fromJson(Map<String, dynamic> json) =>
       _$AppInfoFromJson(json);

@@ -10,8 +10,10 @@
 			"path": "../flutter_netflix_clone/flutter_app"
 		},
 		{
-			"path": "."
+			"path": "../allgo_app"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.project.outputPath": ""
+	}
 }

@@ -9,30 +9,30 @@ part of 'app_banner.dart';
 AppBanner _$AppBannerFromJson(Map<String, dynamic> json) {
   return $checkedNew('AppBanner', json, () {
     final val = AppBanner(
-      no: $checkedConvert(json, 'no', (v) => v as int?),
+      seq: $checkedConvert(json, 'seq', (v) => v as int?),
       screen: $checkedConvert(json, 'screen', (v) => v as String?),
       code: $checkedConvert(json, 'code', (v) => v as String?),
-      codeName: $checkedConvert(json, 'codeName', (v) => v as String?),
+      code_name: $checkedConvert(json, 'code_name', (v) => v as String?),
       explain: $checkedConvert(json, 'explain', (v) => v as String?),
-      urlPath: $checkedConvert(json, 'urlPath', (v) => v as String?),
-      useYn: $checkedConvert(json, 'useYn', (v) => v as String?),
-      startDate: $checkedConvert(json, 'startDate', (v) => v as String?),
-      endDate: $checkedConvert(json, 'endDate', (v) => v as String?),
-      updateDate: $checkedConvert(json, 'updateDate', (v) => v as String?),
+      url_path: $checkedConvert(json, 'url_path', (v) => v as String?),
+      use_yn: $checkedConvert(json, 'use_yn', (v) => v as String?),
+      start_date: $checkedConvert(json, 'start_date', (v) => v as String?),
+      end_date: $checkedConvert(json, 'end_date', (v) => v as String?),
+      create_time: $checkedConvert(json, 'create_time', (v) => v as String?),
     );
     return val;
   });
 }
 
 Map<String, dynamic> _$AppBannerToJson(AppBanner instance) => <String, dynamic>{
-      'no': instance.no,
+      'seq': instance.seq,
       'screen': instance.screen,
       'code': instance.code,
-      'codeName': instance.codeName,
-      'urlPath': instance.urlPath,
+      'code_name': instance.code_name,
+      'url_path': instance.url_path,
       'explain': instance.explain,
-      'useYn': instance.useYn,
-      'startDate': instance.startDate,
-      'endDate': instance.endDate,
-      'updateDate': instance.updateDate,
+      'use_yn': instance.use_yn,
+      'start_date': instance.start_date,
+      'end_date': instance.end_date,
+      'create_time': instance.create_time,
     };

@@ -12,6 +12,7 @@ AppPushInfo _$AppPushInfoFromJson(Map<String, dynamic> json) {
       id: $checkedConvert(json, 'id', (v) => v as int?),
       fcm_token: $checkedConvert(json, 'fcm_token', (v) => v as String?),
       push_yn: $checkedConvert(json, 'push_yn', (v) => v as String?),
+      os: $checkedConvert(json, 'os', (v) => v as String?),
       create_time: $checkedConvert(json, 'create_time',
           (v) => v == null ? null : DateTime.parse(v as String)),
     );
@@ -24,5 +25,6 @@ Map<String, dynamic> _$AppPushInfoToJson(AppPushInfo instance) =>
       'id': instance.id,
       'fcm_token': instance.fcm_token,
       'push_yn': instance.push_yn,
+      'os': instance.os,
       'create_time': instance.create_time?.toIso8601String(),
     };

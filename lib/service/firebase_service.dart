@@ -44,10 +44,20 @@ class FirebaseService {
   }
 
   Future<ResponseBase> fetchToken(String token) async {
+    var os = Platform.isAndroid
+        ? "android"
+        : Platform.isIOS
+            ? "ios"
+            : "none";
+
     final response = await http.post(
       Uri.http(getApiUrl(), URL_TOKEN_MERGE),
       body: jsonEncode(
-        {'fcm_token': token, 'create_time': DateTime.now().toString()},
+        {
+          'fcm_token': token,
+          'os': os,
+          'create_time': DateTime.now().toString()
+        },
       ),
       headers: {'Content-Type': "application/json"},
     );

@@ -6,12 +6,14 @@ class AppPushInfo {
   final int? id;
   final String? fcm_token;
   final String? push_yn;
+  final String? os;
   final DateTime? create_time;
 
   AppPushInfo(
       {required this.id,
       required this.fcm_token,
       required this.push_yn,
+      required this.os,
       required this.create_time});
 
   factory AppPushInfo.fromJson(Map<String, dynamic> json) =>

@@ -40,6 +40,7 @@ class FirebaseService {
     _firebaseMessaging.getToken().then((token) {
       print("fcm token ::: " + token.toString());
       fetchToken(token.toString());
+      _firebaseMessaging.subscribeToTopic("ALLDEV");
     });
   }
 

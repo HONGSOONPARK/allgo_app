@@ -1,6 +1,8 @@
 import 'package:allgo_app/screen/algorithm_screen.dart';
 import 'package:allgo_app/screen/login_screen.dart';
 import 'package:allgo_app/screen/splash_screen.dart';
+import 'package:allgo_app/service/firebase_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:allgo_app/screen/home_screen.dart';
 import 'package:allgo_app/widget/basic/bottom_bar.dart';
@@ -23,6 +25,17 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
+    _init();
+  }
+
+  _init() async {
+    //오래걸리는 작업 수행
+
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    // FirebaseService().registerToken();
+    FirebaseService();
   }
 
   @override

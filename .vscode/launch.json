@@ -20,8 +20,8 @@
             "name": "Android Phone",
             "request": "launch",
             "type": "dart",
-            "deviceId": "LG F350S"
-        
+            // "deviceId": "LG F350S"
+            "deviceId": "SM G955N"
           },
 
            

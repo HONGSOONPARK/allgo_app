@@ -33,10 +33,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _init() async {
     //오래걸리는 작업 수행
-    //
-    await Firebase.initializeApp();
 
-    FirebaseService().registerToken();
+    // WidgetsFlutterBinding.ensureInitialized();
+    // await Firebase.initializeApp();
+    // // FirebaseService().registerToken();
+    // FirebaseService();
 
     // 앱 기본 정보(버전, 빌드버전);
     packageInfo = await getAppInfo();
@@ -117,6 +118,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     return Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasData) {
                     appInfo = AppInfo.fromJson(snapshot.data!.data);
+
                     _goMain(context);
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");

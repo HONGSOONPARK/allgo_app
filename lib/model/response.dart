@@ -6,7 +6,7 @@ part 'response.g.dart';
 
 @JsonSerializable(includeIfNull: true, checked: true, explicitToJson: true)
 class ResponseBase {
-  final Map<String, dynamic?> data;
+  final Map<String, dynamic> data;
   final int? code;
 
   ResponseBase({

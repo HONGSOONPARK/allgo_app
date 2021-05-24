@@ -17,11 +17,18 @@
         
           },
           {
-            "name": "Android Phone",
+            "name": "Android Phone SM G955N",
             "request": "launch",
             "type": "dart",
             // "deviceId": "LG F350S"
             "deviceId": "SM G955N"
+          },
+
+          {
+            "name": "Android Phone LG F350S",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "LG F350S"
           },
 
            

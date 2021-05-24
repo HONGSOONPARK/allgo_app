@@ -26,8 +26,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
+    Firebase.initializeApp();
     // futureAppInfo = fetchAppInfo();
     _init();
+
     futureResponse = fetchResponse();
   }
 
@@ -61,6 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
         dialogMarket(context);
       } else {
         return new Timer(_duration, navigationPage);
+        // return _fcmInit(context);
       }
     } else if (Platform.isIOS) {
       if (packageInfo.version != appInfo.ios_market_version) {
@@ -85,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
     KakaoContext.javascriptClientId = "3fc56c8fd83c803b2db20ef493cfe970";
 
     return Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff082640),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -95,11 +98,11 @@ class _SplashScreenState extends State<SplashScreen> {
               // SizedBox(height: 20),
               //
               //
-              Image.asset(
-                'images/test_img.png',
-                fit: BoxFit.contain,
-                height: 200,
-              ),
+              // Image.asset(
+              //   'images/test_img.png',
+              //   fit: BoxFit.contain,
+              //   height: 200,
+              // ),
 
               Text('ALLGO',
                   style: TextStyle(
@@ -115,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 future: futureResponse,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(child: null);
                   } else if (snapshot.hasData) {
                     appInfo = AppInfo.fromJson(snapshot.data!.data);
 

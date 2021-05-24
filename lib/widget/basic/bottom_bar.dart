@@ -4,7 +4,7 @@ class Bottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueAccent,
+      color: Color(0xff082640),
       child: Container(
         height: 50,
         child: TabBar(
@@ -15,13 +15,13 @@ class Bottom extends StatelessWidget {
               Tab(
                 icon: Icon(
                   Icons.home,
-                  size: 30,
+                  size: 20,
                 ),
               ),
               Tab(
                 icon: Icon(
                   Icons.assessment,
-                  size: 30,
+                  size: 20,
                 ),
               ),
               Tab(

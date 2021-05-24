@@ -1,6 +1,9 @@
 import 'package:allgo_app/screen/user_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/auth.dart';
 import 'package:kakao_flutter_sdk/common.dart';
 
@@ -65,6 +68,17 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,7 +139,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ButtonTheme(
                           child: ElevatedButton(
                             onPressed: () {
-                              print('애플 로그인');
+                              print('구글 로그인');
+                              signInWithGoogle();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('구글 로그인')),
+                              );
+                            },
+                            child: Text("구글 로그인"),
+                            style: ElevatedButton.styleFrom(),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(4),
+                        width: double.infinity,
+                        child: ButtonTheme(
+                          child: ElevatedButton(
+                            onPressed: () {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text('애플 로그인')),
                               );

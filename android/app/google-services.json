@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "748061288903-k8p01eqda3kmla18moa4e1f48ap44883.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pro.ject.allgo_app",
+            "certificate_hash": "03b934d4524e56952124e2f27a54a7b29b0a7688"
+          }
+        },
+        {
           "client_id": "748061288903-sc47mc0k0pv7tab5oan2soh5v9ielorq.apps.googleusercontent.com",
           "client_type": 3
         }

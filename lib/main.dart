@@ -3,6 +3,7 @@ import 'package:allgo_app/screen/login_screen.dart';
 import 'package:allgo_app/screen/splash_screen.dart';
 import 'package:allgo_app/service/firebase_service.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:allgo_app/screen/home_screen.dart';
 import 'package:allgo_app/widget/basic/bottom_bar.dart';
@@ -25,17 +26,16 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
     _init();
   }
 
   _init() async {
     //오래걸리는 작업 수행
 
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
-    // FirebaseService().registerToken();
-    FirebaseService();
+    // WidgetsFlutterBinding.ensureInitialized();
+    // await Firebase.initializeApp();
+    // // FirebaseService().registerToken();
+    // FirebaseService();
   }
 
   @override
@@ -44,9 +44,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'ALLGO',
       theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.blue,
-        accentColor: Colors.blueAccent,
+        primaryColor: Color(0xff082640),
+        accentColor: Color(0xff61788C),
       ),
       home: DefaultTabController(
         length: 3,

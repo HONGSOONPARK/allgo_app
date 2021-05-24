@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 class FirebaseService {
   static final FirebaseService _manager = FirebaseService._internal();
   late final FirebaseMessaging _firebaseMessaging;
+  late BuildContext context;
 
   factory FirebaseService() {
     return _manager;
@@ -21,7 +22,6 @@ class FirebaseService {
     // 초기화 코드
 
     _firebaseMessaging = FirebaseMessaging.instance;
-
     registerToken();
     messageLisener();
     // FirebaseMessaging.onBackgroundMessage(_messageHandler);
@@ -64,7 +64,6 @@ class FirebaseService {
 
   Future<void> _messageHandler(RemoteMessage? message) async {
     print('background message ');
-
     return;
   }
 

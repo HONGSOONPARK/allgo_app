@@ -1,11 +1,14 @@
-import 'package:allgo_app/screen/user_screen.dart';
+import 'dart:convert';
+
+import 'package:allgo_app/common/util.dart';
+import 'package:allgo_app/model/response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/auth.dart';
 import 'package:kakao_flutter_sdk/common.dart';
+
+import 'package:http/http.dart' as http;
 
 // 플랫폼	앱 키	재발급
 // 네이티브 앱 키	27ccd9bac2fb0003b87894181c138f26 복사	재발급
@@ -47,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       var code = await AuthCodeClient.instance.request();
 
-      print("_loginWithKakaocode " + code);
+      print("`_loginWithKakao`code " + code);
       await _issueAccessToken(code);
     } catch (e) {
       print(e);
@@ -66,6 +69,52 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       print("error on issuing access token: $e");
     }
+  }
+
+  Future<ResponseBase> signInWithKaKao() async {
+    // final clientState = Uuid().v4();
+    // final url = Uri.https('kauth.kakao.com', '/oauth/authorize', {
+    //   'response_type': 'code',
+    //   'client_id': "0cdc5405e9a41dc9b32c5590b888dacc",
+    //   'response_mode': 'form_post',
+    //   'redirect_uri': 'http://192.168.219.101:3333/oauth/kakao/token',
+    //   'scope': 'account_email profile',
+    //   // 'state': clientState,
+    // });
+
+    final param = {
+      'response_type': 'code',
+      'client_id': "0cdc5405e9a41dc9b32c5590b888dacc",
+      'response_mode': 'form_post',
+      'redirect_uri': 'http://192.168.219.101:3000/oauth/kakao/sign_in',
+      'scope': 'account_email profile'
+    };
+
+    final response =
+        await http.get(Uri.https("kauth.kakao.com", '/oauth/authorize', param));
+    if (response.statusCode == 200) {
+      return ResponseBase.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('공지사항 불러오기 실패');
+    }
+
+    // final result = await FlutterWebAut3000h.authenticate(
+    //     url: url.toString(),
+    //     callbackUrlScheme: "webauthcallback"); //"applink"//"signinwithapple"
+    // final body = Uri.parse(result).queryParameters;
+    // print(body["code"]);
+
+    // final tokenUrl = Uri.https('kauth.kakao.com', '/oauth/token', {
+    //   'grant_type': 'authorization_code',
+    //   'client_id': "<카카오 관리 콘솔에서 제공하는 REST_API 키 입력>",
+    //   'redirect_uri': '<카카오에 등록한 authrization_code 받을 return uri 입력>',
+    //   'code': body["code"],
+    // });
+    // var responseTokens = await http.post(tokenUrl.toString());
+    // Map<String, dynamic> bodys = json.decode(responseTokens.body);
+    // var response = await http.post(
+    //     "https://sage-dorian-anise.glitch.me/callbacks/kakao/token",
+    //     body: {"accessToken": bodys['access_token']});
   }
 
   Future<UserCredential> signInWithGoogle() async {
@@ -118,8 +167,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               print('카카오톡 로그인 버튼');
                               _isKakaoTalkInstalled
-                                  ? _loginWithKakao()
-                                  : _loginWithKakao();
+                                  ? signInWithKaKao()
+                                  : signInWithKaKao();
 
                               // ScaffoldMessenger.of(context).showSnackBar(
                               //   SnackBar(content: Text('카카오톡 로그인')),

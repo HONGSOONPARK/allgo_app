@@ -33,8 +33,10 @@ dependencies:
   firebase_core: ^1.0.3
   firebase_messaging: ^10.0.0
 
+  # kakao talk
   json_annotation: ^4.0.1 
-  
+  platform:
+  dio:
   package_info: ^2.0.0
 
   kakao_flutter_sdk: ^0.6.1

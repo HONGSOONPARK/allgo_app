@@ -7,17 +7,5 @@
 
 
 
-    <activity android:name="com.linusu.flutter_web_auth.CallbackActivity" >
-    <intent-filter android:label="flutter_web_auth">
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="http://192.168.219.101:3000/oauth/kakao/sign_in" />
 
-        <!-- 
-        http://192.168.219.101:3333/oauth/kakao/sign_in
-        http://192.168.219.101:3333/oauth/kakao/token 
-        -->
-    </intent-filter>
-    </activity>
 </manifest>

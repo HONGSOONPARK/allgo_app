@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:allgo_app/common/util.dart';
 import 'package:allgo_app/model/response.dart';
+import 'package:allgo_app/screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -50,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       var code = await AuthCodeClient.instance.request();
 
-      print("`_loginWithKakao`code " + code);
+      print("_loginWithKakao crosode " + code);
       await _issueAccessToken(code);
     } catch (e) {
       print(e);
@@ -62,10 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
       var token = await AuthApi.instance.issueAccessToken(authCode);
       AccessTokenStore.instance.toStore(token);
       print(token);
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => LoginDone()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
     } catch (e) {
       print("error on issuing access token: $e");
     }
@@ -130,6 +131,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    KakaoContext.clientId = "27ccd9bac2fb0003b87894181c138f26";
+    KakaoContext.javascriptClientId = "3fc56c8fd83c803b2db20ef493cfe970";
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Builder(builder: (context) {
@@ -167,8 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               print('카카오톡 로그인 버튼');
                               _isKakaoTalkInstalled
-                                  ? signInWithKaKao()
-                                  : signInWithKaKao();
+                                  ? _loginWithKakao()
+                                  : _loginWithKakao();
 
                               // ScaffoldMessenger.of(context).showSnackBar(
                               //   SnackBar(content: Text('카카오톡 로그인')),

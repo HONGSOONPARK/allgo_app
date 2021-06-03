@@ -38,6 +38,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <data android:scheme="kakao27ccd9bac2fb0003b87894181c138f26" android:host="oauth"/>
             </intent-filter>
         </activity>
         
@@ -49,7 +50,7 @@
 
 
         <!-- kakaotalk login-->
-        <activity android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity">
+        <!-- <activity android:name="pro.ject.allgo.AuthCodeCustomTabsActivity">
           <intent-filter android:label="flutter_web_auth">
               <action android:name="android.intent.action.VIEW" />
               <category android:name="android.intent.category.DEFAULT" />
@@ -57,7 +58,18 @@
               <data android:scheme="kakao27ccd9bac2fb0003b87894181c138f26" 
               android:host="oauth"/>
           </intent-filter>
-        </activity>
+        </activity> -->
+
+
+<!-- 
+        <activity android:name="com.linusu.flutter_web_auth.CallbackActivity" >
+        <intent-filter android:label="flutter_web_auth">
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http://192.168.219.101:3000/oauth/kakao/sign_in" />
+        </intent-filter>
+        </activity> -->
 
     </application>
 </manifest>

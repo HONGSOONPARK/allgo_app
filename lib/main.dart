@@ -1,9 +1,6 @@
 import 'package:allgo_app/screen/algorithm_screen.dart';
 import 'package:allgo_app/screen/login_screen.dart';
 import 'package:allgo_app/screen/splash_screen.dart';
-import 'package:allgo_app/service/firebase_service.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:allgo_app/screen/home_screen.dart';
 import 'package:allgo_app/widget/basic/bottom_bar.dart';

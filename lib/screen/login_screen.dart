@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:allgo_app/common/util.dart';
+import 'package:allgo_app/model/kakao_user_info.dart';
 import 'package:allgo_app/model/response.dart';
 import 'package:allgo_app/screen/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/auth.dart';
 import 'package:kakao_flutter_sdk/common.dart';
+import 'package:kakao_flutter_sdk/user.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -50,7 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
   _loginWithKakao() async {
     try {
       var code = await AuthCodeClient.instance.request();
-
       print("_loginWithKakao crosode " + code);
       await _issueAccessToken(code);
     } catch (e) {
@@ -65,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print(token);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => LoginDone()),
       );
     } catch (e) {
       print("error on issuing access token: $e");
@@ -116,6 +117,36 @@ class _LoginScreenState extends State<LoginScreen> {
     // var response = await http.post(
     //     "https://sage-dorian-anise.glitch.me/callbacks/kakao/token",
     //     body: {"accessToken": bodys['access_token']});
+  }
+
+  Future<UserCredential> signInWithKaKao2() async {
+    // final clientState = Uuid().v4();
+    // final url = Uri.https('kauth.kakao.com', '/oauth/authorize', {
+    //   'response_type': 'code',
+    //   'client_id': "0cdc5405e9a41dc9b32c5590b888dacc",
+    //   'response_mode': 'form_post',
+    //   'redirect_uri': 'http://192.168.219.101:3333/oauth/kakao/token',
+    //   'scope': 'account_email profile',
+    //   // 'state': clientState,
+    // });
+
+    final param = {
+      'response_type': 'code',
+      'client_id': "0cdc5405e9a41dc9b32c5590b888dacc",
+      'response_mode': 'form_post',
+      'redirect_uri': 'http://192.168.219.101:3000/oauth/kakao/sign_in',
+      'scope': 'account_email profile'
+    };
+
+    final response =
+        await http.get(Uri.https("kauth.kakao.com", '/oauth/authorize', param));
+
+    print(" response :: " + response.toString());
+    if (response.statusCode == 200) {
+      return FirebaseAuth.instance.signInWithCustomToken(response.body);
+    } else {
+      throw Exception('공지사항 불러오기 실패');
+    }
   }
 
   Future<UserCredential> signInWithGoogle() async {
@@ -218,6 +249,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
+                      Container(
+                        margin: const EdgeInsets.all(4),
+                        width: double.infinity,
+                        child: ButtonTheme(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              print('카카오톡 로그인 버튼22222');
+                              _isKakaoTalkInstalled
+                                  ? signInWithKaKao2()
+                                  : signInWithKaKao2();
+
+                              // ScaffoldMessenger.of(context).showSnackBar(
+                              //   SnackBar(content: Text('카카오톡 로그인')),
+                              // );
+                            },
+                            child: Text("카카오테스트 개남"),
+                            style: ElevatedButton.styleFrom(),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -311,6 +362,53 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         );
       }),
+    );
+  }
+}
+
+class LoginDone extends StatelessWidget {
+  late KakaoUserInfo kui;
+
+  Future<bool?> _getUser() async {
+    try {
+      var user = await UserApi.instance.me();
+      print(" user String ::" + user.toString());
+    } on KakaoAuthException {} catch (e) {}
+  }
+
+  Future<ResponseBase> fetchKakaoUserInfo(UserApi user) async {
+    final response = await http.post(
+      Uri.http(getApiUrl(), URL_UPDATE_USER),
+
+// ?      body: kui = KakaoUserInfo.fromJson(user.toString());
+
+      // appInfo = AppInfo.fromJson(snapshot.data!.data);
+
+      body: jsonEncode(
+        {
+          'id': 1,
+          'os': 2,
+        },
+      ),
+      headers: {'Content-Type': "application/json"},
+    );
+    if (response.statusCode == 201) {
+      return ResponseBase.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('user 갱신 실패');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _getUser();
+
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Text('Login Success!'),
+        ),
+      ),
     );
   }
 }

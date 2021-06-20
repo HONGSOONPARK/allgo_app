@@ -2,6 +2,8 @@ import 'dart:io';
 
 const URL_TOKEN_MERGE = "api/pushinfo/m";
 
+const URL_UPDATE_USER = "api/user/u";
+
 String getApiUrl() {
   String url = "others";
   if (Platform.isAndroid) {

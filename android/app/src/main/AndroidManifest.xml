@@ -35,11 +35,21 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
-            <intent-filter>
+            <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="kakao27ccd9bac2fb0003b87894181c138f26" android:host="oauth"/>
-            </intent-filter>
+            </intent-filter>ß -->
+
+            <intent-filter>
+              <action android:name="android.intent.action.MAIN"/>
+              <category android:name="android.intent.category.LAUNCHER"/>
+          </intent-filter>
+          <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
         </activity>
         
         <!-- Don't delete the meta-data below.
@@ -51,7 +61,7 @@
 
         <!-- kakaotalk login-->
         <!-- <activity android:name="pro.ject.allgo.AuthCodeCustomTabsActivity">
-          <intent-filter android:label="flutter_web_auth">
+          <intent-filter android:label="ß">
               <action android:name="android.intent.action.VIEW" />
               <category android:name="android.intent.category.DEFAULT" />
               <category android:name="android.intent.category.BROWSABLE" />
@@ -61,15 +71,24 @@
         </activity> -->
 
 
-<!-- 
-        <activity android:name="com.linusu.flutter_web_auth.CallbackActivity" >
+
+        <!-- <activity android:name="pro.ject.allgo_app.CallbackActivity" >
         <intent-filter android:label="flutter_web_auth">
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="http://192.168.219.101:3000/oauth/kakao/sign_in" />
+            <data android:scheme="webauthcallback" />
         </intent-filter>
         </activity> -->
+
+
+        <activity android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity">
+          <intent-filter android:label="flutter_web_auth"> <action android:name="android.intent.action.VIEW" />
+              <category android:name="android.intent.category.DEFAULT" />
+              <category android:name="android.intent.category.BROWSABLE" />
+              <data android:scheme="kakao27ccd9bac2fb0003b87894181c138f26" android:host="oauth"/>
+          </intent-filter>
+      </activity>
 
     </application>
 </manifest>

@@ -13,15 +13,20 @@
             "name": "Android",
             "request": "launch",
             "type": "dart",
-            "deviceId": "sdk gphone arm64"
+            "deviceId": "sdk gphone arm64" 
         
           },
           {
             "name": "Android Phone SM G955N",
             "request": "launch",
             "type": "dart",
-            // "deviceId": "LG F350S"
             "deviceId": "SM G955N"
+          },
+          {
+            "name": "Android Phone LG V30",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "LGM V300L"
           },
 
           {
@@ -30,10 +35,6 @@
             "type": "dart",
             "deviceId": "LG F350S"
           },
-
-           
-
-
           {
             "name": "iPhone",
             "request": "launch",

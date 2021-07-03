@@ -79,10 +79,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: AppRoutes.DASHBOARD,
+      initialRoute: AppRoutes.SPLASH,
       getPages: AppPages.list,
       debugShowCheckedModeBanner: false,
-      title: '행복한 고릴라',
+      title: 'project allgo',
       darkTheme: AppThemes.dark,
       theme: AppThemes.light,
       themeMode: ThemeMode.system,

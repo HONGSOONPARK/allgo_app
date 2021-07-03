@@ -9,10 +9,17 @@ import 'package:allgo_app/screen/info/info_binding.dart';
 import 'package:allgo_app/screen/info/info_page.dart';
 import 'package:allgo_app/screen/setting/setting_binding.dart';
 import 'package:allgo_app/screen/setting/setting_page.dart';
+import 'package:allgo_app/screen/splash/splash_binding.dart';
+import 'package:allgo_app/screen/splash/splash_page.dart';
 import 'package:get/get.dart';
 
 class AppPages {
   static var list = [
+    GetPage(
+      name: AppRoutes.SPLASH,
+      page: () => SplashPage(),
+      binding: SplashBinding(),
+    ),
     GetPage(
       name: AppRoutes.DASHBOARD,
       page: () => DashboardPage(),

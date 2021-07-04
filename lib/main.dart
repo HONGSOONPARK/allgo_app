@@ -69,11 +69,28 @@
 
 import 'package:allgo_app/routes/app_pages.dart';
 import 'package:allgo_app/routes/app_routes.dart';
+import 'package:allgo_app/screen/dashboard/dashboard_controller.dart';
+import 'package:allgo_app/screen/home/home_controller.dart';
+import 'package:allgo_app/screen/info/info_controller.dart';
+import 'package:allgo_app/screen/setting/setting_controller.dart';
+import 'package:allgo_app/screen/splash/splash_controller.dart';
 import 'package:allgo_app/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
-void main() => runApp(MyApp());
+import 'common/firebase.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initialization.then((value) {
+    Get.put(SplashController());
+    Get.lazyPut(() => DashboardController());
+    // Get.lazyPut(() => HomeController());
+    // Get.lazyPut(() => InfoController());
+    // Get.lazyPut(() => SettingController());
+  });
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

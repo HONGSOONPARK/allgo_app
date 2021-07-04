@@ -10,7 +10,13 @@ class HomeController extends GetxController {
   bool isLoading = true;
 
   @override
+  void onReady() {
+    print('@onReady HomeController');
+  }
+
+  @override
   void onInit() {
+    print('@onInit HomeController');
     HomeProvider().getHomeList(
       beforeSend: () {
         print('before send');

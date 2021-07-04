@@ -88,51 +88,52 @@ class _SplashScreenState extends State<SplashScreen> {
     KakaoContext.javascriptClientId = "3fc56c8fd83c803b2db20ef493cfe970";
 
     return Scaffold(
-        backgroundColor: Color(0xff082640),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // CircularProgressIndicator(
-              //     backgroundColor: Colors.white, strokeWidth: 6),
-              // SizedBox(height: 20),
-              //
-              //
-              // Image.asset(
-              //   'images/test_img.png',
-              //   fit: BoxFit.contain,
-              //   height: 200,
-              // ),
+      backgroundColor: Color(0xff082640),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // CircularProgressIndicator(
+            //     backgroundColor: Colors.white, strokeWidth: 6),
+            // SizedBox(height: 20),
+            //
+            //
+            // Image.asset(
+            //   'images/test_img.png',
+            //   fit: BoxFit.contain,
+            //   height: 200,
+            // ),
 
-              Text('ALLGO',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      shadows: <Shadow>[
-                        Shadow(offset: Offset(2, 2), color: Colors.white10)
-                      ],
-                      decorationStyle: TextDecorationStyle.solid)),
+            Text('ALLGO',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                    shadows: <Shadow>[
+                      Shadow(offset: Offset(2, 2), color: Colors.white10)
+                    ],
+                    decorationStyle: TextDecorationStyle.solid)),
 
-              FutureBuilder<ResponseBase>(
-                future: futureResponse,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: null);
-                  } else if (snapshot.hasData) {
-                    appInfo = AppInfo.fromJson(snapshot.data!.data);
+            FutureBuilder<ResponseBase>(
+              future: futureResponse,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: null);
+                } else if (snapshot.hasData) {
+                  appInfo = AppInfo.fromJson(snapshot.data!.data);
 
-                    _goMain(context);
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
+                  _goMain(context);
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
 
-                  return Container();
-                },
-              ),
-            ],
-          ),
-        ));
+                return Container();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Future<ResponseBase> fetchResponse() async {

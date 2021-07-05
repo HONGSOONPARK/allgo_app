@@ -8,9 +8,6 @@ class PracticePage extends GetView<PracticeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(controller.title),
-      ),
       body: Container(
         child: GetBuilder<PracticeController>(
           builder: (controller) {

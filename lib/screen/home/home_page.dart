@@ -8,9 +8,6 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(controller.title),
-      ),
       body: Container(
         child: GetBuilder<HomeController>(
           builder: (controller) {
@@ -18,17 +15,8 @@ class HomePage extends GetView<HomeController> {
               isLoading: controller.isLoading,
               child: ListView.builder(
                 itemCount: controller.portfolioList.length,
-                itemBuilder: (cotext, index) => Container(
-                  child: Center(
-                    child: Row(
-                      children: [
-                        Text(controller.portfolioList[index].stock_name
-                            .toString())
-                      ],
-                    ),
-                  ),
-                ),
-                // HomeListItem(portfolio: controller.portfolioList[index]),
+                itemBuilder: (cotext, index) =>
+                    HomeListItem(portfolio: controller.portfolioList[index]),
               ),
             );
           },

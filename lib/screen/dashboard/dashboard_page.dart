@@ -3,6 +3,7 @@ import 'package:allgo_app/screen/home/home_page.dart';
 import 'package:allgo_app/screen/info/info_page.dart';
 import 'package:allgo_app/screen/practice/practice_page.dart';
 import 'package:allgo_app/screen/setting/setting_page.dart';
+import 'package:allgo_app/widget/basic/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(builder: (controller) {
       return Scaffold(
+        appBar: TopBar(),
         body: SafeArea(
           child: IndexedStack(index: controller.tabIndex, children: [
             HomePage(),

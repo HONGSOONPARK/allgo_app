@@ -7,9 +7,6 @@ class InfoPage extends GetView<InfoController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(controller.title),
-      ),
       body: Container(
         child: Center(
           child: Column(

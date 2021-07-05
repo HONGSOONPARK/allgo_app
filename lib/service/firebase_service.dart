@@ -26,6 +26,7 @@ class FirebaseService {
     messageLisener();
     // FirebaseMessaging.onBackgroundMessage(_messageHandler);
   }
+
   void navigationPage() {
     // Navigator.of(context).pushReplacementNamed('/MainScreen');
   }

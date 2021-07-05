@@ -70,6 +70,7 @@
 import 'package:allgo_app/routes/app_pages.dart';
 import 'package:allgo_app/routes/app_routes.dart';
 import 'package:allgo_app/screen/dashboard/dashboard_controller.dart';
+import 'package:allgo_app/screen/firebase/firebase_controller.dart';
 import 'package:allgo_app/screen/home/home_controller.dart';
 import 'package:allgo_app/screen/info/info_controller.dart';
 import 'package:allgo_app/screen/setting/setting_controller.dart';
@@ -84,7 +85,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialization.then((value) {
     Get.put(SplashController());
+    Get.put(FirebaseController());
     Get.lazyPut(() => DashboardController());
+
     // Get.lazyPut(() => HomeController());
     // Get.lazyPut(() => InfoController());
     // Get.lazyPut(() => SettingController());

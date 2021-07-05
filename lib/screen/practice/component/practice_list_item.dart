@@ -1,11 +1,11 @@
-import 'package:allgo_app/model/post.dart';
+import 'package:allgo_app/model/practice_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeListItem extends StatelessWidget {
-  final Post? post;
+class PracticeListItem extends StatelessWidget {
+  final PracticeInfo? post;
 
-  const HomeListItem({Key? key, this.post}) : super(key: key);
+  const PracticeListItem({Key? key, this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

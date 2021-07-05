@@ -17,9 +17,18 @@ class HomePage extends GetView<HomeController> {
             return LoadingOveray(
               isLoading: controller.isLoading,
               child: ListView.builder(
-                itemCount: controller.postsList.length,
-                itemBuilder: (cotext, index) =>
-                    HomeListItem(post: controller.postsList[index]),
+                itemCount: controller.portfolioList.length,
+                itemBuilder: (cotext, index) => Container(
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Text(controller.portfolioList[index].stock_name
+                            .toString())
+                      ],
+                    ),
+                  ),
+                ),
+                // HomeListItem(portfolio: controller.portfolioList[index]),
               ),
             );
           },

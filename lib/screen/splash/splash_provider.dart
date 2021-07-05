@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:allgo_app/common/api_request.dart';
 import 'package:allgo_app/common/api_url.dart';
 import 'package:allgo_app/model/app_info.dart';
-import 'package:allgo_app/model/post.dart';
+import 'package:allgo_app/model/practice_info.dart';
 import 'package:allgo_app/model/response.dart';
 
 class SplashProvider {

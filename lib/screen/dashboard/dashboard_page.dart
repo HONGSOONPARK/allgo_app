@@ -1,6 +1,7 @@
 import 'package:allgo_app/screen/dashboard/dashboard_controller.dart';
 import 'package:allgo_app/screen/home/home_page.dart';
 import 'package:allgo_app/screen/info/info_page.dart';
+import 'package:allgo_app/screen/practice/practice_page.dart';
 import 'package:allgo_app/screen/setting/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class DashboardPage extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(index: controller.tabIndex, children: [
             HomePage(),
-            InfoPage(),
+            PracticePage(),
             SettingPage(),
           ]),
         ),
@@ -27,7 +28,7 @@ class DashboardPage extends StatelessWidget {
             type: BottomNavigationBarType.fixed,
             items: [
               _bottomNavigationBarItem(icon: Icons.home, label: '메인'),
-              _bottomNavigationBarItem(icon: Icons.assessment, label: '분석'),
+              _bottomNavigationBarItem(icon: Icons.assessment, label: '연습한거'),
               _bottomNavigationBarItem(icon: Icons.account_box, label: '내 정보'),
             ]),
       );

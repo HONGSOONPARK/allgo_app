@@ -1,7 +1,8 @@
 import 'package:allgo_app/model/app_info.dart';
-import 'package:allgo_app/model/post.dart';
+import 'package:allgo_app/model/practice_info.dart';
 import 'package:allgo_app/routes/app_routes.dart';
 import 'package:allgo_app/screen/dashboard/dashboard_page.dart';
+import 'package:allgo_app/screen/firebase/firebase_provider.dart';
 import 'package:allgo_app/screen/home/home_page.dart';
 import 'package:allgo_app/screen/splash/splash_provider.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,6 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     print('@onInit DashboardController');
-
     SplashProvider().getAppInfo(
       beforeSend: () {
         print('before send');
@@ -37,12 +37,13 @@ class SplashController extends GetxController {
         // print(data.length);
       },
       onError: (error) {
-        print('onError');
+        print('onError ::: ');
         splashStatus = 999;
         isLoading = false;
         update();
       },
     );
+
     super.onInit();
   }
 

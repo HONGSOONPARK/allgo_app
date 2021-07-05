@@ -1,4 +1,4 @@
-import 'package:allgo_app/model/post.dart';
+import 'package:allgo_app/model/ag_portfolio.dart';
 import 'package:allgo_app/screen/home/home_provider.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get.dart';
@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final String title = 'Home Title';
 
-  List<Post> postsList = [];
+  List<AgPortfolio> portfolioList = [];
   bool isLoading = true;
 
   @override
@@ -17,16 +17,16 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     print('@onInit HomeController');
-    HomeProvider().getHomeList(
+    HomeProvider().getPortfolioAll(
       beforeSend: () {
         print('before send');
       },
-      onSuccess: (posts) {
-        print('onSuccess');
-        postsList.addAll(posts!);
+      onSuccess: (list) {
+        print('onSuccess=============================');
+        portfolioList.addAll(list!);
         isLoading = false;
         update();
-        print(posts.length);
+        print(portfolioList.length.toString() + " ||| 무야호");
       },
       onError: (error) {
         print('onError');

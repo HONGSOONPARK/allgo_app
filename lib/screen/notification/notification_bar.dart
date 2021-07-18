@@ -1,0 +1,33 @@
+import 'dart:developer';
+
+import 'package:allgo_app/screen/dashboard/dashboard_controller.dart';
+import 'package:allgo_app/screen/notification/notification_controller.dart';
+import 'package:allgo_app/screen/notification/notification_page.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class NotificationBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    final NotificationController controller = Get.find();
+
+    return Container(
+      child: AppBar(
+        title: Text(controller.title),
+        centerTitle: false,
+        elevation: 0.0,
+        backgroundColor: Color(0xff082640),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.refresh_rounded),
+              onPressed: () {
+                log('onPressed 노티 새로고침');
+              }),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(50.0);
+}

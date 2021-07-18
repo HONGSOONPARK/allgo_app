@@ -1,9 +1,8 @@
 import 'package:allgo_app/screen/dashboard/dashboard_controller.dart';
 import 'package:allgo_app/screen/home/home_page.dart';
-import 'package:allgo_app/screen/info/info_page.dart';
-import 'package:allgo_app/screen/practice/practice_page.dart';
+import 'package:allgo_app/screen/notification/notification_page.dart';
 import 'package:allgo_app/screen/setting/setting_page.dart';
-import 'package:allgo_app/widget/basic/top_bar.dart';
+import 'package:allgo_app/screen/dashboard/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,8 +15,9 @@ class DashboardPage extends StatelessWidget {
         body: SafeArea(
           child: IndexedStack(index: controller.tabIndex, children: [
             HomePage(),
-            PracticePage(),
+            // PracticePage(),
             SettingPage(),
+            NotificationPage()
           ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -29,9 +29,9 @@ class DashboardPage extends StatelessWidget {
             showUnselectedLabels: true,
             type: BottomNavigationBarType.fixed,
             items: [
-              _bottomNavigationBarItem(icon: Icons.home, label: '메인'),
-              _bottomNavigationBarItem(icon: Icons.assessment, label: '연습한거'),
-              _bottomNavigationBarItem(icon: Icons.account_box, label: '내 정보'),
+              _bottomNavigationBarItem(icon: Icons.home, label: '포트폴리오'),
+              // _bottomNavigationBarItem(icon: Icons.assessment, label: '연습한거'),
+              _bottomNavigationBarItem(icon: Icons.account_box, label: '설정'),
             ]),
       );
     });

@@ -7,7 +7,9 @@ class HomeController extends GetxController {
   final String title = 'Home Title';
 
   List<AgPortfolio> portfolioList = [];
+  late AgPortfolio portfolioData;
   bool isLoading = true;
+  String portfolioType = 'ALL';
 
   @override
   void onReady() {
@@ -17,23 +19,78 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     print('@onInit HomeController');
-    HomeProvider().getPortfolioAll(
+    // HomeProvider().getPortfolioAll(
+    //   beforeSend: () {
+    //     print('before send');
+    //   },
+    //   onSuccess: (list) {
+    //     portfolioList.addAll(list!);
+    //     isLoading = false;
+    //     update();
+    //   },
+    //   onError: (error) {
+    //     print('onError');
+    //     isLoading = false;
+    //     update();
+    //   },
+    // );
+
+    // portfolio = {
+    // ag_type:column/:orderby
+    // }
+
+    //  안씀
+    portfolioData = AgPortfolio.fromJson({
+      'ag_type': portfolioType,
+      'column': 'rate',
+      'orderby': 'desc',
+    });
+
+    // post 방식으로 api 호출 성공!!!
+    // 탭 만들고 구분하자
+    // dynamic data = {
+    //   'ag_type': portfolioType,
+    //   'column': 'rate',
+    //   'orderby': 'desc',
+    // };
+    requestHomeList();
+    super.onInit();
+  }
+
+  void changeList(type) {
+    print('changeList ::' + type);
+    portfolioType = type;
+    update();
+    requestHomeList();
+  }
+
+  dynamic setData(type) {
+    dynamic data = {
+      'ag_type': type,
+      'column': 'rate',
+      'orderby': 'desc',
+    };
+    return data;
+  }
+
+  void requestHomeList() {
+    HomeProvider().getPortfolioTypePost(
       beforeSend: () {
-        print('before send');
+        print('before getPortfolioTypePost');
       },
       onSuccess: (list) {
-        print('onSuccess=============================');
+        print('onSuccess getPortfolioTypePost :: HomeController');
+        portfolioList.clear();
         portfolioList.addAll(list!);
         isLoading = false;
         update();
-        print(portfolioList.length.toString() + " ||| 무야호");
       },
       onError: (error) {
         print('onError');
         isLoading = false;
         update();
       },
+      portfolio: setData(portfolioType),
     );
-    super.onInit();
   }
 }

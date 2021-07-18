@@ -16,6 +16,8 @@ class AgPortfolio {
   final String? status;
   final int? cur_price;
   final double? rate;
+  final String? column;
+  final String? orderby;
 
   AgPortfolio(
       {required this.id,
@@ -30,7 +32,9 @@ class AgPortfolio {
       required this.last_sell_date,
       required this.status,
       required this.cur_price,
-      required this.rate});
+      required this.rate,
+      required this.column,
+      required this.orderby});
 
   factory AgPortfolio.fromJson(Map<String, dynamic> json) =>
       _$AgPortfolioFromJson(json);

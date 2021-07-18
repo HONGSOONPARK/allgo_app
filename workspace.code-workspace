@@ -4,10 +4,10 @@
 			"path": "../../nodejs/api_mento"
 		},
 		{
-			"path": "../../nodejs/nestjs-study"
+			"path": "../allgo_app"
 		},
 		{
-			"path": "../allgo_app"
+			"path": "../../nodejs/nest-auth"
 		}
 	],
 	"settings": {

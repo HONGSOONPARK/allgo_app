@@ -26,6 +26,8 @@ AgPortfolio _$AgPortfolioFromJson(Map<String, dynamic> json) {
       status: $checkedConvert(json, 'status', (v) => v as String?),
       cur_price: $checkedConvert(json, 'cur_price', (v) => v as int?),
       rate: $checkedConvert(json, 'rate', (v) => (v as num?)?.toDouble()),
+      column: $checkedConvert(json, 'column', (v) => v as String?),
+      orderby: $checkedConvert(json, 'orderby', (v) => v as String?),
     );
     return val;
   });
@@ -46,4 +48,6 @@ Map<String, dynamic> _$AgPortfolioToJson(AgPortfolio instance) =>
       'status': instance.status,
       'cur_price': instance.cur_price,
       'rate': instance.rate,
+      'column': instance.column,
+      'orderby': instance.orderby,
     };

@@ -8,35 +8,63 @@ class HomeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 5, right: 0, bottom: 5, left: 0),
-      padding: EdgeInsets.only(top: 20, right: 20, bottom: 15, left: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(20),
-            blurRadius: 1,
-            spreadRadius: 1,
-            offset: Offset(0, 2),
-          )
-        ],
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text("${portfolio!.stock_name}(${portfolio!.code})"),
+    return InkWell(
+        onTap: () {
+          print('test');
+        },
+        child: new Container(
+          margin: EdgeInsets.only(top: 5, right: 5, bottom: 5, left: 5),
+          padding: EdgeInsets.only(top: 5, right: 5, bottom: 5, left: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: Colors.blueGrey, width: 1),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white30,
+                blurRadius: 1,
+                spreadRadius: 2,
+                offset: Offset(0, 2),
+              )
             ],
           ),
-          Column(
+          child: Column(
             children: [
-              Text(portfolio!.cur_price.toString()),
-              Text(portfolio!.rate.toString()),
+              Column(
+                children: [
+                  Text("${portfolio!.stock_name}(${portfolio!.code})",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 2.0,
+                          color: Colors.blue.shade800)),
+                ],
+              ),
+              Column(
+                children: [
+                  Padding(padding: EdgeInsets.all(5)),
+                  Text(portfolio!.cur_price.toString(),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 2.0,
+                          color: Colors.black)),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Text(
+                    portfolio!.rate.toString() + '%',
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 2.0,
+                        color: portfolio!.rate! > 0
+                            ? Colors.red.shade900
+                            : portfolio!.rate! == 0
+                                ? Colors.black45
+                                : Colors.blue.shade400),
+                  ),
+                ],
+              )
             ],
-          )
-        ],
-      ),
-    );
+          ),
+        ));
   }
 }

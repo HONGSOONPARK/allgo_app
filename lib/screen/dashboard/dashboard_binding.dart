@@ -1,5 +1,6 @@
 import 'package:allgo_app/screen/home/home_controller.dart';
 import 'package:allgo_app/screen/info/info_controller.dart';
+import 'package:allgo_app/screen/notification/notification_controller.dart';
 import 'package:allgo_app/screen/practice/practice_controller.dart';
 import 'package:allgo_app/screen/setting/setting_controller.dart';
 import 'package:get/instance_manager.dart';
@@ -14,5 +15,6 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<InfoController>(() => InfoController());
     Get.lazyPut<PracticeController>(() => PracticeController());
     Get.lazyPut<SettingController>(() => SettingController());
+    Get.lazyPut<NotificationController>(() => NotificationController());
   }
 }
